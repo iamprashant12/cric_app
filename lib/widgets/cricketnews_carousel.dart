@@ -1,3 +1,4 @@
+import 'package:cricket_app/screens/news.dart';
 import 'package:cricket_app/widgets/customlistcard.dart';
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
@@ -45,28 +46,34 @@ class _CricketNewsState extends State<CricketNews> {
                     builder: (BuildContext context) {
                       return i == 0
                           ? advertisment()
-                          : Container(
-                              width: MediaQuery.of(context).size.width,
-                              margin: EdgeInsets.all(5.0),
-                              decoration: BoxDecoration(color: Colors.white),
-                              child: new Center(
-                                child: new Column(
-                                  mainAxisSize: MainAxisSize.min,
-                                  crossAxisAlignment: CrossAxisAlignment.center,
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: <Widget>[
-                                    new Icon(
-                                      Icons.add_circle_outline,
-                                      color: Colors.black,
-                                      size: 40.0,
-                                    ),
-                                    new SizedBox(
-                                      height: 10.0,
-                                    ),
-                                    new Text("View More News̥")
-                                  ],
-                                ),
-                              ));
+                          : InkWell(
+                        onTap: ()=>Navigator.of(context).push(MaterialPageRoute(builder: (context)=>Scaffold(
+                          appBar: AppBar(),
+                          body: News(widget.list),
+                        ))),
+                        child: Container(
+                            width: MediaQuery.of(context).size.width,
+                            margin: EdgeInsets.all(5.0),
+                            decoration: BoxDecoration(color: Colors.white),
+                            child: new Center(
+                              child: new Column(
+                                mainAxisSize: MainAxisSize.min,
+                                crossAxisAlignment: CrossAxisAlignment.center,
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: <Widget>[
+                                  new Icon(
+                                    Icons.add_circle_outline,
+                                    color: Colors.black,
+                                    size: 40.0,
+                                  ),
+                                  new SizedBox(
+                                    height: 10.0,
+                                  ),
+                                  new Text("View More News̥")
+                                ],
+                              ),
+                            )),
+                      );
                     },
                   );
                 }).toList(),

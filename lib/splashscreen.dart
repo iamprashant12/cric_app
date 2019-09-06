@@ -22,7 +22,6 @@ class _SplashScreenState extends State<SplashScreen> {
     // TODO: implement initState
     super.initState();
     listenForPost();
-    //Timer(Duration(seconds: 5),()=>Navigator.of(context).pushReplacement(new MaterialPageRoute(builder: (context)=>MainPage(news,current,tips),)));
   }
 
   void listenForPost() async {
@@ -43,12 +42,14 @@ class _SplashScreenState extends State<SplashScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Stack(
-        fit: StackFit.expand,
-        children: <Widget>[
-          new Image.asset('images/SplashScreen.png',fit: BoxFit.fill,)
-        ],
+    return new SafeArea(
+      child: Scaffold(
+        body: Stack(
+          fit: StackFit.expand,
+          children: <Widget>[
+            new Image.asset('images/SplashScreen.png',fit: BoxFit.fill,)
+          ],
+        ),
       ),
     );
   }
