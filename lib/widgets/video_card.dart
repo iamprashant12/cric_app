@@ -1,6 +1,7 @@
 import 'package:cricket_app/model/video_model.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:flutter/material.dart';
+import 'dart:io' show Platform;
 
 class VideoCard extends StatelessWidget {
   double ratio;
@@ -82,8 +83,22 @@ class VideoCard extends StatelessWidget {
   void _launchURL() async
   {
     String url=list[index].url;
-    if(await canLaunch(url))
-      await launch(url);
+
+    if (Platform.isIOS) {
+      if (await canLaunch('youtube:'+url)) {
+        await launch('youtube:'+url, forceSafariVC: false);
+      } else {
+        if (await canLaunch('https:'+url)) {
+          await launch('https:'+url);
+        } else {
+          throw 'Could not launch https://www.youtube.com/channel/UCwXdFgeE9KYzlDdR7TG9cMw';
+        }
+      }
+    }
+
+
+    if(await canLaunch('https:'+url))
+      await launch('https:'+url);
     else
       print("Can't launch");
   }

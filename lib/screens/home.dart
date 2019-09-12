@@ -77,14 +77,14 @@ class _HomeState extends State<Home> {
         thumbnail: 'images/thumb1.jpg',
         duration: 1,
         updated_on: 1,
-        url: "https://www.youtube.com/watch?v=TwqmIqgiOy0");
+        url: "//www.youtube.com/watch?v=TwqmIqgiOy0");
     list.add(vid);
     vid=Video(
         title: "Steve Smith Strikes Stunning 211 | The Ashes Day 2 Highlights ",
         thumbnail: "images/thumb2.jpg",
         duration: 1,
         updated_on: 1,
-        url: "https://www.youtube.com/watch?v=DUxbfz3daXQ&t=90s"
+        url: "//www.youtube.com/watch?v=DUxbfz3daXQ&t=90s"
     );
     list.add(vid);
     vid=Video(
@@ -92,7 +92,7 @@ class _HomeState extends State<Home> {
         thumbnail: "images/thumb3.jpg",
         duration: 1,
         updated_on: 1,
-        url: "https://www.youtube.com/watch?v=xibXVGaKNBE"
+        url: "//www.youtube.com/watch?v=xibXVGaKNBE"
     );
     list.add(vid);
     return Column(
