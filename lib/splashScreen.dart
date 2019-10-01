@@ -47,7 +47,36 @@ class _SplashScreenState extends State<SplashScreen> {
         body: Stack(
           fit: StackFit.expand,
           children: <Widget>[
-            new Image.asset('images/SplashScreen.png',fit: BoxFit.fill,)
+            new Image.asset('images/SplashScreen.jpeg',fit: BoxFit.fill,),
+            new Align(
+              alignment: Alignment.center,
+              child: new Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: <Widget>[
+                  new Text("Real Time Cricket News",style: new TextStyle(
+                      fontSize: 30.0,
+                      color: Colors.white
+                  ),),
+                  new Text("Fantasy Cricket Predictor",style: new TextStyle(
+                      fontSize: 30.0,
+                      color: Colors.white
+                  ),),
+                  new Text("&",style: new TextStyle(
+                      fontSize: 30.0,
+                      color: Colors.white
+                  ),),
+                  new Text("Fantasy Cricket Tips",style: new TextStyle(
+                      fontSize: 30.0,
+                      color: Colors.white
+                  ),),
+                  new Text("Pitch Report",style: new TextStyle(
+                      fontSize: 30.0,
+                      color: Colors.white
+                  ),)
+                ],
+              ),
+            )
           ],
         ),
       ),

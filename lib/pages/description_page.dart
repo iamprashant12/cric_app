@@ -3,26 +3,27 @@ import 'package:flutter/material.dart';
 import '../model/post_model.dart';
 
 class Description extends StatefulWidget {
-  List<Post> list;
-  int index;
+  final List<Post> list;
+  final int index;
   Description(this.list,this.index);
 
   @override
-  _DescriptionState createState() => _DescriptionState();
+  _DescriptionState createState() => _DescriptionState(list,index);
 }
 
 class _DescriptionState extends State<Description> {
   int _currentindex = 0;
+  List<Post> list;
+  int index;
+  _DescriptionState(this.list,this.index);
   @override
   Widget build(BuildContext context) {
-
-
     List<Widget> children = [
       Center(
-        child: Text(widget.list[widget.index].english),
+        child: Text(list[index].english),
       ),
       Center(
-        child: Text(widget.list[widget.index].hindi),
+        child: Text(list[index].hindi),
       )
     ];
 

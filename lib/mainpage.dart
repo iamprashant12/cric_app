@@ -25,7 +25,7 @@ class _MainPageState extends State<MainPage> {
   @override
   Widget build(BuildContext context) {
     List<Widget> _children = [
-      Home(widget.current,widget.news,widget.tips),
+      Home(widget.news,widget.current,widget.tips),
       Tips(widget.tips),
       News(widget.news),
       Matches(widget.current),
@@ -34,13 +34,13 @@ class _MainPageState extends State<MainPage> {
     return Scaffold(
       appBar: AppBar(
         title: Container(
-          child: Text("HOME"),
+          child: Text("Cricknick",style: TextStyle(fontWeight: FontWeight.w700,fontSize: 25.0),),
           alignment: Alignment.center,
         ),
       ),
       body: _children[_currentindex],
       bottomNavigationBar: Theme(
-          data: ThemeData(canvasColor: Colors.blueAccent),
+          data: ThemeData(canvasColor: Colors.green),
           child: BottomNavigationBar(
               onTap: onTapChange,
               currentIndex: _currentindex,

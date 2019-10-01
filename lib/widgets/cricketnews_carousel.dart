@@ -1,5 +1,6 @@
 import 'package:cricket_app/screens/news.dart';
 import 'package:cricket_app/widgets/customlistcard.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 
@@ -21,10 +22,17 @@ class _CricketNewsState extends State<CricketNews> {
       child: Column(
         mainAxisSize: MainAxisSize.min,
         mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
-          Text(
-            "Cricket News",
-            style: TextStyle(fontSize: 15.0, fontWeight: FontWeight.w600),
+          new Row(
+            children: <Widget>[
+              Text(
+                "Cricket News",
+                style: TextStyle(fontSize: 14.0, fontWeight: FontWeight.w600,fontFamily: 'RobotReavers',color: Colors.green),
+              ),
+              new SizedBox(width: 10.0,),
+              new Expanded(child: new Divider(color: Colors.green,))
+            ],
           ),
           new SizedBox(
             height: 5.0,

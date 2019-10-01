@@ -39,38 +39,39 @@ class _HomeState extends State<Home> {
         widget.tips.length, 6); //for showing atmost 6 tips element in home page
 
     return new Container(
+        padding: EdgeInsets.all(5.0),
         child: new Flex(
-      direction: Axis.vertical,
-      children: <Widget>[
-        new Expanded(
-          child: new Column(
-            children: <Widget>[
-              Expanded(
-                  child: new ListView.builder(
-                itemBuilder: (context, index) => (index ==
-                        0 //checking for zero for inserting the horizontal list(i.e Current Matches) into vertical view
-                    ? showCurrentMatch(widget.current, widget.news, width)
-                    : index ==
-                            minTips +
-                                1 //checking for last index address to insert view more news portion in List
-                        ? additionalTips(width, widget.tips)
-                        : new ListCard(
-                            'images/ball.png', widget.tips, index - 1)),
-                itemCount: minTips + 2,
-                //increased count by 2 as we have inserted two extra elements(i.e horizontal list and view more tips) in list
-                shrinkWrap: true,
-              )),
-            ],
-            mainAxisSize: MainAxisSize.min,
-          ),
-        )
-      ],
-    ));
+          direction: Axis.vertical,
+          children: <Widget>[
+            new Expanded(
+              child: new Column(
+                children: <Widget>[
+                  Expanded(
+                      child: new ListView.builder(
+                    itemBuilder: (context, index) => (index ==
+                            0 //checking for zero for inserting the horizontal list(i.e Current Matches) into vertical view
+                        ? showCurrentMatch(widget.current, widget.news, width)
+                        : index ==
+                                minTips +
+                                    1 //checking for last index address to insert view more news portion in List
+                            ? additionalTips(width, widget.tips)
+                            : new ListCard(
+                                'images/ball.png', widget.tips, index - 1)),
+                    itemCount: minTips + 2,
+                    //increased count by 2 as we have inserted two extra elements(i.e horizontal list and view more tips) in list
+                    shrinkWrap: true,
+                  )),
+                ],
+                mainAxisSize: MainAxisSize.min,
+              ),
+            )
+          ],
+        ));
   }
 
   Widget showCurrentMatch(List<Post> current, List<Post> news, double width) {
     //Shows whole portion including the current matches and Carousel news section
-    int minMatches = prefix0.min(news.length, 4);
+    int minMatches = prefix0.min(current.length, 4);
     List<Video> list = [];
     Video vid = Video(
         title: "How Virat Kohli became India's most successful Test captain̥",
@@ -79,25 +80,24 @@ class _HomeState extends State<Home> {
         updated_on: 1,
         url: "//www.youtube.com/watch?v=TwqmIqgiOy0");
     list.add(vid);
-    vid=Video(
+    vid = Video(
         title: "Steve Smith Strikes Stunning 211 | The Ashes Day 2 Highlights ",
         thumbnail: "images/thumb2.jpg",
         duration: 1,
         updated_on: 1,
-        url: "//www.youtube.com/watch?v=DUxbfz3daXQ&t=90s"
-    );
+        url: "//www.youtube.com/watch?v=DUxbfz3daXQ&t=90s");
     list.add(vid);
-    vid=Video(
-        title: "Jasprit Bumrah - The Inspiration Is At Home | ICC Cricket World Cup",
+    vid = Video(
+        title:
+            "Jasprit Bumrah - The Inspiration Is At Home | ICC Cricket World Cup",
         thumbnail: "images/thumb3.jpg",
         duration: 1,
         updated_on: 1,
-        url: "//www.youtube.com/watch?v=xibXVGaKNBE"
-    );
+        url: "//www.youtube.com/watch?v=xibXVGaKNBE");
     list.add(vid);
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
-      crossAxisAlignment: CrossAxisAlignment.center,
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
         new Container(
           child: new ListView.builder(
@@ -118,17 +118,53 @@ class _HomeState extends State<Home> {
         SizedBox(
           height: 10.0,
         ),
-        new Text("Featured Videos",style: TextStyle(fontSize: 15.0,fontWeight: FontWeight.w600),),
+        new Row(
+          children: <Widget>[
+            new Text(
+              "Featured Videos",
+              style: TextStyle(
+                  fontSize: 14.0,
+                  fontWeight: FontWeight.w600,
+                  fontFamily: 'RobotReavers',
+                  color: Colors.green),
+            ),
+            new SizedBox(
+              width: 10.0,
+            ),
+            new Expanded(
+                child: new Divider(
+              color: Colors.green,
+            ))
+          ],
+        ),
         SizedBox(
           height: 10.0,
         ),
         VideoList(list),
-        Text(
-          "Fantasy Cricket Tips + Match Info",
-          style: TextStyle(fontSize: 16.0, fontWeight: FontWeight.w600),
+        new SizedBox(
+          height: 15.0,
+        ),
+        new Row(
+          children: <Widget>[
+            Text(
+              "Cricket Tips",
+              style: TextStyle(
+                  fontSize: 14.0,
+                  fontWeight: FontWeight.w600,
+                  fontFamily: 'RobotReavers',
+                  color: Colors.green),
+            ),
+            new SizedBox(
+              width: 10.0,
+            ),
+            new Expanded(
+                child: new Divider(
+              color: Colors.green,
+            ))
+          ],
         ),
         SizedBox(
-          height: 5.0,
+          height: 10.0,
         )
       ],
     );
@@ -168,7 +204,7 @@ class _HomeState extends State<Home> {
       onTap: () => Navigator.of(context).push(
           MaterialPageRoute(builder: (context) => MoreMatches(widget.current))),
       child: new Card(
-        elevation: 8.0,
+        elevation: 15.0,
         margin: EdgeInsets.all(5.0),
         child: Container(
           constraints: new BoxConstraints(
@@ -204,10 +240,10 @@ class _HomeState extends State<Home> {
     return Container(
       child: ListView.builder(
         scrollDirection: Axis.horizontal,
-        itemBuilder: (context, index) => VideoCard(0.70,list,index),
+        itemBuilder: (context, index) => VideoCard(0.70, list, index),
         itemCount: list.length,
       ),
-      height: MediaQuery.of(context).size.height*0.32,
+      height: MediaQuery.of(context).size.height * 0.32,
     );
   }
 }
